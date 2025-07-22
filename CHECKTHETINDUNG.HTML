@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kiểm Tra Số Thẻ Tín Dụng</title>
+</head>
+
+<body>
+    <h2>Nhập Số Thẻ Tín Dụng</h2>
+    <input type="text" id="inputCardNumber" placeholder="Nhập số thẻ tín dụng">
+    <button id="btnSubmit">Gửi</button> <br>
+    <span id="message"></span>
+
+    <script>
+        var inputCardNumber = document.getElementById('inputCardNumber');
+        var btnSubmit = document.getElementById('btnSubmit');
+        var message = document.getElementById('message');
+
+        function validateCardNumber(cardNumber) {
+            var cardNumberPattern = /^(?:\d{4} ?){4}$/;
+            return cardNumberPattern.test(cardNumber);
+        }
+
+        function handleSubmit() {
+            if (validateCardNumber(inputCardNumber.value)) {
+                message.innerText = 'Số thẻ tín dụng hợp lệ!';
+                message.style.color = 'green';
+            } else {
+                message.innerText = 'Số thẻ tín dụng không hợp lệ. Vui lòng nhập lại.';
+                message.style.color = 'red';
+            }
+        }
+
+        btnSubmit.onclick = handleSubmit;
+    </script>
+</body>
+
+</html>

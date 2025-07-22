@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kiểm Tra Mã Bưu Điện</title>
+</head>
+
+<body>
+    <h2>Nhập Mã Bưu Điện</h2>
+    <input type="text" id="inputPostalCode" placeholder="Nhập mã bưu điện (5 chữ số)">
+    <button id="btnSubmit">Gửi</button> <br>
+    <span id="message"></span>
+
+    <script>
+        var inputPostalCode = document.getElementById('inputPostalCode');
+        var btnSubmit = document.getElementById('btnSubmit');
+        var message = document.getElementById('message');
+
+        function validatePostalCode(postalCode) {
+            var postalCodePattern = /^\d{5}$/;
+            return postalCodePattern.test(postalCode);
+        }
+
+        function handleSubmit() {
+            if (validatePostalCode(inputPostalCode.value)) {
+                message.innerText = 'Mã bưu điện hợp lệ!';
+                message.style.color = 'green';
+            } else {
+                message.innerText = 'Mã bưu điện không hợp lệ. Vui lòng nhập lại.';
+                message.style.color = 'red';
+            }
+        }
+
+        btnSubmit.onclick = handleSubmit;
+    </script>
+</body>
+
+</html>

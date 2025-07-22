@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kiểm Tra URL</title>
+</head>
+
+<body>
+    <h2>Nhập URL</h2>
+    <input type="text" id="inputURL" placeholder="Nhập URL (VD: https://example.com)">
+    <button id="btnSubmit">Gửi</button> <br>
+    <span id="message"></span>
+
+    <script>
+        var inputURL = document.getElementById('inputURL');
+        var btnSubmit = document.getElementById('btnSubmit');
+        var message = document.getElementById('message');
+
+        function validateURL(url) {
+            var urlPattern = /^(https?:\/\/)?([a-zA-Z0-9_-]+\.[a-zA-Z0-9_-]+)(:[0-9]{1,5})?(\/.*)?$/;
+            return urlPattern.test(url);
+        }
+
+        function handleSubmit() {
+            if (validateURL(inputURL.value)) {
+                message.innerText = 'URL hợp lệ!';
+                message.style.color = 'green';
+            } else {
+                message.innerText = 'URL không hợp lệ. Vui lòng nhập lại.';
+                message.style.color = 'red';
+            }
+        }
+
+        btnSubmit.onclick = handleSubmit;
+    </script>
+</body>
+
+</html>

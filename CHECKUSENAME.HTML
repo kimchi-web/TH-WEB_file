@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kiểm Tra Username</title>
+</head>
+
+<body>
+    <h2>Nhập Username</h2>
+    <input type="text" id="inputUsername" placeholder="Nhập username">
+    <button id="btnSubmit">Gửi</button> <br>
+    <span id="message"></span>
+
+    <script>
+        var inputUsername = document.getElementById('inputUsername');
+        var btnSubmit = document.getElementById('btnSubmit');
+        var message = document.getElementById('message');
+
+        function validateUsername(username) {
+            var usernamePattern = /^[a-zA-Z0-9_]{5,15}$/;
+            return usernamePattern.test(username);
+        }
+
+        function handleSubmit() {
+            if (validateUsername(inputUsername.value)) {
+                message.innerText = 'Username hợp lệ!';
+                message.style.color = 'green';
+            } else {
+                message.innerText = 'Username không hợp lệ. Vui lòng nhập lại.';
+                message.style.color = 'red';
+            }
+        }
+
+        btnSubmit.onclick = handleSubmit;
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kiểm Tra Địa Chỉ IP</title>
+</head>
+
+<body>
+    <h2>Nhập Địa Chỉ IP</h2>
+    <input type="text" id="inputIP" placeholder="Nhập địa chỉ IP (VD: 192.168.1.1)">
+    <button id="btnSubmit">Gửi</button> <br>
+    <span id="message"></span>
+
+    <script>
+        var inputIP = document.getElementById('inputIP');
+        var btnSubmit = document.getElementById('btnSubmit');
+        var message = document.getElementById('message');
+
+        function validateIP(ip) {
+            var ipPattern = /^(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/;
+            return ipPattern.test(ip);
+        }
+
+        function handleSubmit() {
+            if (validateIP(inputIP.value)) {
+                message.innerText = 'Địa chỉ IP hợp lệ!';
+                message.style.color = 'green';
+            } else {
+                message.innerText = 'Địa chỉ IP không hợp lệ. Vui lòng nhập lại.';
+                message.style.color = 'red';
+            }
+        }
+
+        btnSubmit.onclick = handleSubmit;
+    </script>
+</body>
+
+</html>

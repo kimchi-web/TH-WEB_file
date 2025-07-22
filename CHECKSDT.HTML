@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kiểm Tra Số Điện Thoại</title>
+</head>
+
+<body>
+    <h2>Kiểm Tra Số Điện Thoại Việt Nam</h2>
+    <input type="text" id="inputPhone" placeholder="Nhập số điện thoại">
+    <button id="btnSubmit">Gửi</button> <br>
+    <span id="message"></span>
+
+    <script>
+        var inputPhone = document.getElementById('inputPhone');
+        var btnSubmit = document.getElementById('btnSubmit');
+        var message = document.getElementById('message');
+
+        function validatePhone(phone) {
+            var phonePattern = /^0\d{9}$/;
+            return phonePattern.test(phone);
+        }
+
+        function handleSubmit() {
+            if (validatePhone(inputPhone.value)) {
+                message.innerText = 'Số điện thoại hợp lệ!';
+                message.style.color = 'green';
+            } else {
+                message.innerText = 'Số điện thoại không hợp lệ. Vui lòng nhập lại.';
+                message.style.color = 'red';
+            }
+        }
+
+        btnSubmit.onclick = handleSubmit;
+    </script>
+</body>
+
+</html>

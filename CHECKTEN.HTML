@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kiểm Tra Họ Tên</title>
+</head>
+
+<body>
+    <h2>Nhập Họ Tên</h2>
+    <input type="text" id="inputName" placeholder="Nhập họ tên">
+    <button id="btnSubmit">Gửi</button> <br>
+    <span id="message"></span>
+
+    <script>
+        var inputName = document.getElementById('inputName');
+        var btnSubmit = document.getElementById('btnSubmit');
+        var message = document.getElementById('message');
+
+        function validateName(name) {
+            var namePattern = /^[A-Za-z\s]+$/;
+            return namePattern.test(name) && name.trim() !== '';
+        }
+
+        function handleSubmit() {
+            if (validateName(inputName.value)) {
+                message.innerText = 'Họ tên hợp lệ!';
+                message.style.color = 'green';
+            } else {
+                message.innerText = 'Họ tên không hợp lệ. Vui lòng nhập lại.';
+                message.style.color = 'red';
+            }
+        }
+
+        btnSubmit.onclick = handleSubmit;
+    </script>
+</body>
+
+</html>

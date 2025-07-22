@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kiểm Tra Mật Khẩu An Toàn</title>
+</head>
+
+<body>
+    <h2>Kiểm Tra Mật Khẩu An Toàn</h2>
+    <input type="password" id="inputPassword" placeholder="Nhập mật khẩu">
+    <button id="btnSubmit">Gửi</button> <br>
+    <span id="message"></span>
+
+    <script>
+        var inputPassword = document.getElementById('inputPassword');
+        var btnSubmit = document.getElementById('btnSubmit');
+        var message = document.getElementById('message');
+
+        function validatePassword(password) {
+            var passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+            return passwordPattern.test(password);
+        }
+
+        function handleSubmit() {
+            if (validatePassword(inputPassword.value)) {
+                message.innerText = 'Mật khẩu an toàn!';
+                message.style.color = 'green';
+            } else {
+                message.innerText = 'Mật khẩu không an toàn. Vui lòng nhập lại.';
+                message.style.color = 'red';
+            }
+        }
+
+        btnSubmit.onclick = handleSubmit;
+    </script>
+</body>
+
+</html>

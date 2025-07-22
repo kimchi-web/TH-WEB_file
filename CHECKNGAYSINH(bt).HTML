@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kiểm Tra Ngày Sinh</title>
+</head>
+
+<body>
+    <h2>Nhập Ngày Sinh</h2>
+    <input type="text" id="inputDate" placeholder="dd/mm/yyyy">
+    <button id="btnSubmit">Gửi</button> <br>
+    <span id="message"></span>
+
+    <script>
+        var inputDate = document.getElementById('inputDate');
+        var btnSubmit = document.getElementById('btnSubmit');
+        var message = document.getElementById('message');
+
+        function validateDate(date) {
+            var datePattern = /^(0[1-9]|[12][0-9]|3[01])\/(0[1-9]|1[0-2])\/(\d{4})$/;
+            if (!datePattern.test(date)) return false;
+
+            var parts = date.split('/');
+            var day = parseInt(parts[0]);
+            var month = parseInt(parts[1]);
+            var year = parseInt(parts[2]);
+
+            // Kiểm tra số ngày trong tháng
+            var daysInMonth = [31, (isLeapYear(year) ? 29 : 28), 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+            return day <= daysInMonth[month - 1];
+        }
+
+        function isLeapYear(year) {
+            return (year % 4 === 0 && year % 100 !== 0) || (year % 400 === 0);
+        }
+
+        function handleSubmit() {
+            if (validateDate(inputDate.value)) {
+                message.innerText = 'Ngày sinh hợp lệ!';
+                message.style.color = 'green';
+            } else {
+                message.innerText = 'Ngày sinh không hợp lệ. Vui lòng nhập lại.';
+                message.style.color = 'red';
+            }
+        }
+
+        btnSubmit.onclick = handleSubmit;
+    </script>
+</body>
+
+</html>
